@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Flex", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
+  background: url(./assets/dashboard_bg.jpg);
+  background-size: cover;
+
+}
+
+header {
+  width: 100vw;
+  height: 100px;
+  padding: 10px;
+  background: #ffffff;
+  /* transparent white */
+  backdrop-filter: blur(10px);
+  /* the glass blur */
+  -webkit-backdrop-filter: blur(10px);
+  /* for Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0px;
+  display: flex;
+  place-content: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-name {
+
+  text-align: center;
+}
+
+.logo-name h3 {
+  color: #ffc115;
+  text-shadow: 2px 1px 2px black;
+  font-size: 50px;
+  letter-spacing: 1px;
+}
+
+.logo-name h3::first-letter {
+  color: orangered;
+  
+}
+
+.logo-name p {
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, #ffc115, #701803);
+  border-image-slice: 1;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 18px;
+  border-bottom: 1px solid rgb(226, 211, 211);
+  padding-bottom: 5px;
+}
+
+main {
+
+  padding-top: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  padding: 0px 2%;
+  min-height: calc(100vh - 190px);
+
+}
+
+.login-container {
+  background: #f3eded69;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #fff;
+  border-radius: 30px;
+  width: 80%;
+  margin: auto;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.login-container .login-left,
+.login-right {
+
+  min-height: calc(100vh - 190px);
+  max-height: calc(100vh - 190px)
+}
+
+.login-container .login-left {
+  padding: 2rem 8rem;
+  width: 48vw;
+  z-index: 3;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.login-container .login-left h1 {
+  text-align: center;
+  font-size: 80px;
+  color: #8A784E;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 3px 3px 5px #383838;
+}
+
+.login-container .login-left h1::after {
+  color: orangered;
+  content: "!";
+  margin-left: 8px;
+}
+
+.loginform {
+  width: 100%;
+  height: 600px;
+  min-height: clamp(20rem, 90vh, 25rem);
+  padding: clamp(0.75rem, 3vw, 1.5rem);
+  margin: clamp(2rem, 10vh, 5.5rem) auto;
+  border-radius: clamp(1rem, 3vw, 1.875rem);
+  background-color: #c5cec1;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginform label {
+  font-size: 30px;
+  font-weight: 600;
+  color: #3d3934;
+  font-family: monospace;
+  text-shadow: 2px 2px 2px rgb(203, 189, 171);
+}
+
+.loginform input {
+  width: 100%;
+  margin: clamp(0.5rem, 2vw, 1.25rem) 0;
+  padding: 10px;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 0px 6px;
+  border-image: linear-gradient(90deg, #ff0000, #ffffff00);
+  border-image-slice: 1;
+  font-size: 25px;
+}
+
+#error {
+  font-size: 19px;
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+
+}
+
+.btn button {
+  padding: clamp(0.4rem, 2vw, 0.625rem) clamp(0.8rem, 3vw, 1.5rem);
+  font-size: 30px;
+font-weight: 500;
+font-family: "Roboto", sans-serif;
+  margin-top: clamp(0.5rem, 2vw, 1.25rem);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border-radius: clamp(0.4rem, 1.5vw, 0.625rem);
+  border: none;
+  width: 100%;
+
+  &:hover {
+    background-color: cornsilk;
+  }
+}
+
+.btn button:active {
+  transform: scale(0.98);
+}
+
+
+.login-container .login-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container .login-right,
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}

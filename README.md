@@ -5,7 +5,8 @@
 ## 🚀 Features
 
 1.  🔐 User Authentication
-      -   Secure login and registration
+      -   Secure login 
+      -   User Add by Admin 
       -   Role-based access (Admin/User)
 
 2.  📦 Product Management
