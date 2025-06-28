@@ -44,13 +44,13 @@ header .logo {
 .logo-name h3 {
   color: #ffc115;
   text-shadow: 2px 1px 2px black;
-  font-size: 50px;
+  font-size: 30px;
   letter-spacing: 1px;
 }
 
 .logo-name h3::first-letter {
   color: orangered;
-  
+
 }
 
 .logo-name p {
@@ -59,14 +59,13 @@ header .logo {
   border-image-slice: 1;
   border-radius: 8px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   border-bottom: 1px solid rgb(226, 211, 211);
   padding-bottom: 5px;
 }
 
 main {
-
-  padding-top: 140px;
+  padding-top: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,7 +73,7 @@ main {
 
 section {
   padding: 0px 2%;
-  min-height: calc(100vh - 190px);
+  min-height: calc(100vh - 150px);
 
 }
 
@@ -93,9 +92,8 @@ section {
 
 .login-container .login-left,
 .login-right {
-
-  min-height: calc(100vh - 190px);
-  max-height: calc(100vh - 190px)
+  min-height: calc(100vh - 140px);
+  max-height: calc(100vh - 140px)
 }
 
 .login-container .login-left {
@@ -108,8 +106,8 @@ section {
 
 .login-container .login-left h1 {
   text-align: center;
-  font-size: 80px;
-  color: #8A784E;
+  font-size: 60px;
+  color: #ffb300;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-shadow: 3px 3px 5px #383838;
 }
@@ -122,10 +120,10 @@ section {
 
 .loginform {
   width: 100%;
-  height: 600px;
+  height: 550px;
   min-height: clamp(20rem, 90vh, 25rem);
   padding: clamp(0.75rem, 3vw, 1.5rem);
-  margin: clamp(2rem, 10vh, 5.5rem) auto;
+  margin: clamp(2rem, 6vh, 5.5rem) auto;
   border-radius: clamp(1rem, 3vw, 1.875rem);
   background-color: #c5cec1;
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
@@ -135,7 +133,7 @@ section {
 }
 
 .loginform label {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   color: #3d3934;
   font-family: monospace;
@@ -150,7 +148,7 @@ section {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 0px 6px;
   border-image: linear-gradient(90deg, #ff0000, #ffffff00);
   border-image-slice: 1;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 #error {
@@ -166,8 +164,8 @@ section {
 .btn button {
   padding: clamp(0.4rem, 2vw, 0.625rem) clamp(0.8rem, 3vw, 1.5rem);
   font-size: 30px;
-font-weight: 500;
-font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
   margin-top: clamp(0.5rem, 2vw, 1.25rem);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
