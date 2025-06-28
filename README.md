@@ -75,6 +75,6 @@ git clone  [Click here](https://github.com/abhishekverma22/Glimmer-Grid.git)
 # 🙌 Author
 Abhishek Verma
 Turning Ideas into Real-World Web Apps | JavaScript Enthusiast
-LinkedIn(: https://www.linkedin.com/in/abhishek-verma-mern) 
+LinkedIn : (https://www.linkedin.com/in/abhishek-verma-mern) 
 
 📍 Ranchi, Jharkhand, INDIA.
