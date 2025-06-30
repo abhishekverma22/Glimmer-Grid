@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glimmer Grid - Home Page</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="module" src="../js/dashboard.js" defer></script>
+</head>
+
+<body>
+ <div class="container">
+        <!-- ===aside bar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="img">
+                    <!-- Using your provided image path -->
+                    <img src="../assets/homelogo.gif" alt="logo" width="100%">
+                </div>
+                <div class="app-name">
+                    <h3>Glimmer Grid</h3>
+                    <p>Your Jewels, Our Precision</p>
+                </div>
+                <div class="button">
+                    <button id="sidebar-toggle-btn">
+                        <!-- Font Awesome icon for toggle -->
+                        <i class="fas fa-angle-double-right toggle-main-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-links">
+                <ul>
+                    <!-- STOCK -->
+                    <li>
+                        <div class="parent-link" data-target="stock-submenu">
+                            <i class="fas fa-box menu-icon"></i> <!-- Stock icon -->
+                            <span class="link-text">STOCK</span>
+                            <i class="fas fa-angle-right arrow-icon"></i> <!-- Arrow icon -->
+                        </div>
+                        <ul id="stock-submenu" class="submenu">
+                            <li><a href="#"><i class="fas fa-plus-circle submenu-icon"></i> <span class="link-text">Add Product</span></a></li>
+                            <li><a href="#"><i class="fas fa-info-circle submenu-icon"></i> <span class="link-text">Product Details</span></a></li>
+                        </ul>
+                    </li>
+
+                    <!-- SALE -->
+                    <li>
+                        <div class="parent-link" data-target="sale-submenu">
+                            <i class="fas fa-shopping-cart menu-icon"></i> <!-- Sale icon -->
+                            <span class="link-text">SALE</span>
+                            <i class="fas fa-angle-right arrow-icon"></i>
+                        </div>
+                        <ul id="sale-submenu" class="submenu">
+                            <li><a href="#"><i class="fas fa-file-invoice-dollar submenu-icon"></i> <span class="link-text">New Invoice</span></a></li>
+                            <li><a href="#"><i class="fas fa-search submenu-icon"></i> <span class="link-text">Search Invoice</span></a></li>
+                            <li><a href="#"><i class="fas fa-clipboard-list submenu-icon"></i> <span class="link-text">New Order</span></a></li>
+                            <li><a href="#"><i class="fas fa-receipt submenu-icon"></i> <span class="link-text">Order Details</span></a></li>
+                        </ul>
+                    </li>
+
+                    <!-- SCHEME -->
+                    <li>
+                        <div class="parent-link" data-target="scheme-submenu">
+                            <i class="fas fa-gift menu-icon"></i> <!-- Scheme icon -->
+                            <span class="link-text">SCHEME</span>
+                            <i class="fas fa-angle-right arrow-icon"></i>
+                        </div>
+                        <ul id="scheme-submenu" class="submenu">
+                            <li><a href="#"><i class="fas fa-plus-square submenu-icon"></i> <span class="link-text">New Scheme</span></a></li>
+                            <li><a href="#"><i class="fas fa-eye submenu-icon"></i> <span class="link-text">Show Details</span></a></li>
+                            <li><a href="#"><i class="fas fa-medal submenu-icon"></i> <span class="link-text">Add Bonus</span></a></li>
+                        </ul>
+                    </li>
+
+                    <!-- LEDGER -->
+                    <li>
+                        <div class="parent-link" data-target="ledger-submenu">
+                            <i class="fas fa-book menu-icon"></i> <!-- Ledger icon -->
+                            <span class="link-text">LEDGER</span>
+                            <i class="fas fa-angle-right arrow-icon"></i>
+                        </div>
+                        <ul id="ledger-submenu" class="submenu">
+                            <li><a href="#"><i class="fas fa-calendar-alt submenu-icon"></i> <span class="link-text">Daily Sale Items</span></a></li>
+                            <li><a href="#"><i class="fas fa-chart-line submenu-icon"></i> <span class="link-text">Expense Report</span></a></li>
+                            <li><a href="#"><i class="fas fa-chart-pie submenu-icon"></i> <span class="link-text">Profit/Loss Statement</span></a></li>
+                        </ul>
+                    </li>
+
+                    <!-- ADMIN -->
+                    <li>
+                        <div class="parent-link" data-target="admin-submenu">
+                            <i class="fas fa-user-shield menu-icon"></i> <!-- Admin icon -->
+                            <span class="link-text">ADMIN</span>
+                            <i class="fas fa-angle-right arrow-icon"></i>
+                        </div>
+                        <ul id="admin-submenu" class="submenu">
+                            <li><a href="#"><i class="fas fa-user-plus submenu-icon"></i> <span class="link-text">Add User</span></a></li>
+                            <li><a href="#"><i class="fas fa-users-cog submenu-icon"></i> <span class="link-text">Manage Users</span></a></li>
+                            <li><a href="#"><i class="fas fa-key submenu-icon"></i> <span class="link-text">Permissions/Roles</span></a></li>
+                            <li><a href="#"><i class="fas fa-cogs submenu-icon"></i> <span class="link-text">System Settings</span></a></li>
+                            <li><a href="#"><i class="fas fa-clipboard-check submenu-icon"></i> <span class="link-text">Audit Logs</span></a></li>
+                            <li><a href="#"><i class="fas fa-database submenu-icon"></i> <span class="link-text">Backup/Restore</span></a></li>
+                        </ul>
+                    </li>
+
+                    <!-- USER DETAILS (direct link) -->
+                    <li>
+                        <a href="#" class="direct-link">
+                            <i class="fas fa-user-circle menu-icon"></i> <!-- User details icon -->
+                            <span class="link-text">USER DETAILS</span>
+                        </a>
+                    </li>
+
+                    <!-- LOGOUT (direct link) -->
+                    <li>
+                        <a href="#" class="direct-link logout-link">
+                            <i class="fas fa-sign-out-alt menu-icon"></i> <!-- Logout icon -->
+                            <span class="link-text">LOGOUT</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Dashboard Content</h1>
+            <p>This is where your main dashboard content will go. The sidebar will expand and collapse as you click on the menu items or the toggle button.</p>
+            <!-- Add more dashboard content here -->
+        </main>
+    </div>
+</body>
+
+</html>

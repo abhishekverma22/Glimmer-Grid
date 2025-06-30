@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- <link rel="stylesheet" href="../css/dashboard.css"> -->
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+  width: 70px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+  border-right: 1px solid #ccc;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.sidebar.expanded {
+  width: 240px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo i {
+  font-size: 22px;
+  color: orangered;
+}
+
+.logo-text {
+  display: none;
+  flex-direction: column;
+}
+
+.sidebar.expanded .logo-text {
+  display: flex;
+}
+
+.logo-text h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #111;
+}
+
+.logo-text p {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+
+#toggleBtn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu li:hover {
+  background: #f0f0f0;
+}
+
+.menu li i {
+  width: 25px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.menu li span {
+  margin-left: 10px;
+  display: none;
+}
+
+.sidebar.expanded li span {
+  display: inline;
+}
+
+.has-submenu {
+  position: relative;
+  flex-direction: column;
+}
+
+.has-submenu .arrow {
+  margin-left: auto;
+  font-size: 12px;
+  transition: transform 0.3s;
+}
+
+.has-submenu.open .arrow {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  list-style: none;
+  padding-left: 40px;
+  display: none;
+  font-size: 14px;
+  color: #444;
+}
+
+.has-submenu.open .submenu {
+  display: block;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+     <i class="fas fa-gem"></i>
+      <div class="logo-text">
+        <h4>Glimmer Grid</h4>
+        <p>Your Jewels, Our Precision</p>
+      </div>
+    </div>
+    <button id="toggleBtn"><i class="fas fa-angle-double-right"></i></button>
+  </div>
+
+  <ul class="menu">
+    <li><i class="fas fa-home"></i><span>Dashboard</span></li>
+
+    <li class="has-submenu">
+      <i class="fas fa-box"></i><span>Product</span>
+      <i class="fas fa-chevron-down arrow"></i>
+      <ul class="submenu">
+        <li>➤ Add Product</li>
+        <li>➤ View Stock</li>
+      </ul>
+    </li>
+
+    <li class="has-submenu">
+      <i class="fas fa-file-invoice"></i><span>Bills</span>
+      <i class="fas fa-chevron-down arrow"></i>
+      <ul class="submenu">
+        <li>➤ New Bill</li>
+        <li>➤ All Bills</li>
+      </ul>
+    </li>
+
+    <li><i class="fas fa-chart-line"></i><span>Sale Report</span></li>
+    <li><i class="fas fa-user"></i><span>User</span></li>
+  </ul>
+</div>
+
+</body>
+</html>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("toggleBtn");
+
+  toggleBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("expanded");
+    const icon = toggleBtn.querySelector("i");
+    icon.classList.toggle("fa-angle-double-right");
+    icon.classList.toggle("fa-angle-double-left");
+  });
+
+  document.querySelectorAll('.has-submenu').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
