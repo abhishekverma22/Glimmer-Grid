@@ -51,7 +51,7 @@
           justify-content: space-between;
           border-bottom: 1px solid rgba(220, 220, 220, 0.281);
           padding-bottom: 10px;
-     
+
         }
 
         .sidebar.collapsed .sidebar-header {
@@ -178,12 +178,12 @@
           list-style: none;
           padding: 0;
           margin: 0;
-        
+
         }
 
         .sidebar-links ul li {
           margin-bottom: 0.5rem;
-          
+
         }
 
         /* Parent link styling (for items with submenus) */
@@ -323,8 +323,14 @@
           /* Darker red on hover */
         }
 
+
+
+
         /* Main Content Area */
         .main-content {
+          width: calc(100vw - 330px);
+          height: 100vh;
+          background-color: rebeccapurple;
           flex-grow: 1;
           padding: 2rem;
           color: #374151;
@@ -332,10 +338,12 @@
           margin-left: 330px;
           /* Initial margin for expanded sidebar */
           transition: margin-left 0.3s ease;
+
         }
 
         .sidebar.collapsed~.main-content {
           margin-left: 70px;
+          min-width: calc(100vw - 70px);
           /* Margin when sidebar is collapsed */
         }
 
