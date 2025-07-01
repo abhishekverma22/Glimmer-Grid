@@ -1,358 +1,507 @@
-        /* Custom Fonts from Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Varela+Round&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        /* Added Inter for general text */
+/* Custom Fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+/* Added Inter for general text */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-          font-family: "Inter", "Roboto Flex", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-          display: flex;
-          min-height: 100vh;
-          overflow-x: hidden;
-          /* Prevent horizontal scroll during sidebar transition */
-          background-color: #f3f4f6;
-          /* Light gray background for overall body */
-        }
+body {
+  font-family: "Inter", "Roboto Flex", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll during sidebar transition */
+  background-color: #f3f4f6;
+  /* Light gray background for overall body */
+}
 
-        /* Side bar nav */
-        .sidebar {
-          position: fixed;
-          left: 0;
-          top: 0;
-          width: 330px;
-          /* Expanded width */
-          height: 100vh;
-          background: #4e2002;
-          /* Dark brown from your design */
-          color: white;
-          transition: width 0.3s ease;
-          overflow: hidden;
-          /* Hide content when collapsed */
-          box-shadow: 2px 0 6px rgba(0, 0, 0, 0.959);
-          z-index: 1000;
-          /* Ensure sidebar is on top */
-        }
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
-        .sidebar.collapsed {
-          width: 70px;
-          /* Collapsed width */
-        }
+/* Side bar nav */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 330px;
+  /* Expanded width */
+  height: 100vh;
+  background: #4e2002;
+  /* Dark brown from your design */
+  color: white;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  /* Hide content when collapsed */
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.959);
+  z-index: 1000;
+  /* Ensure sidebar is on top */
+}
 
-        .sidebar-header {
-          margin-top: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-bottom: 1px solid rgba(220, 220, 220, 0.281);
-          padding-bottom: 10px;
+.sidebar.collapsed {
+  width: 70px;
+  /* Collapsed width */
+}
 
-        }
+.sidebar-header {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.281);
+  padding-bottom: 10px;
 
-        .sidebar.collapsed .sidebar-header {
-          justify-content: center;
-          /* Center toggle button when collapsed */
-          padding-left: 0;
-          flex-direction: column;
-          /* Stack logo and button vertically */
-          gap: 10px;
-          /* Space between logo and button */
-        }
+}
 
-        .sidebar-header .img {
-          width: 80px;
-          flex-shrink: 0;
-          /* Prevent image from shrinking */
-          opacity: 1;
-          transition: opacity 0.3s ease-in-out;
-        }
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+  /* Center toggle button when collapsed */
+  padding-left: 0;
+  flex-direction: column;
+  /* Stack logo and button vertically */
+  gap: 10px;
+  /* Space between logo and button */
+}
 
-        /* REMOVED: .sidebar.collapsed .sidebar-header .img { opacity: 0; width: 0; overflow: hidden; } */
-        /* The above rule was removed to keep the logo visible when collapsed */
+.sidebar-header .img {
+  width: 80px;
+  flex-shrink: 0;
+  /* Prevent image from shrinking */
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
 
-        .sidebar-header .app-name {
-          width: 200px;
-          text-align: center;
-          margin-left: -30px;
-          /* Adjust as per your design */
-          opacity: 1;
-          transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
-          white-space: nowrap;
-          /* Prevent text wrapping */
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
+/* REMOVED: .sidebar.collapsed .sidebar-header .img { opacity: 0; width: 0; overflow: hidden; } */
+/* The above rule was removed to keep the logo visible when collapsed */
 
-        .sidebar.collapsed .sidebar-header .app-name {
-          opacity: 0;
-          width: 0;
-          /* Hide app name when collapsed */
-          margin-left: 0;
-        }
+.sidebar-header .app-name {
+  width: 200px;
+  text-align: center;
+  margin-left: -30px;
+  /* Adjust as per your design */
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
+  white-space: nowrap;
+  /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-        .sidebar-header .button {
-          background: #f8eee7;
-          /* Light background for button */
-          border-bottom-left-radius: 50%;
-          border-top-left-radius: 50%;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          /* Use flexbox to center content */
-          align-items: center;
-          justify-content: center;
-          transition: 0.3s ease-in-out;
-          flex-shrink: 0;
-          /* Prevent button from shrinking */
-        }
+.sidebar.collapsed .sidebar-header .app-name {
+  opacity: 0;
+  width: 0;
+  /* Hide app name when collapsed */
+  margin-left: 0;
+}
 
-        .sidebar-header .button:hover {
-          background-color: #000000;
-          color: white;
-        }
+.sidebar-header .button {
+  background: #f8eee7;
+  /* Light background for button */
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  display: flex;
 
-        .sidebar .button button {
-          width: 100%;
-          cursor: pointer;
-          border-bottom-left-radius: 50%;
-          border-top-left-radius: 50%;
-          border: none;
-          height: 100%;
-          background: transparent;
-          color: rgb(5, 5, 5);
-          font-size: 20px;
-          transition: 0.3s ease-in-out;
-        }
+  /* Use flexbox to center content */
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+  flex-shrink: 0;
+  /* Prevent button from shrinking */
+}
 
-        .sidebar .button button:hover {
-          color: white;
-        }
+.sidebar-header .button:hover {
+  background-color: #000000;
+  color: white;
+}
 
-        /* Toggle icon rotation */
-        .sidebar-header .button button .fas {
-          transition: transform 0.3s ease-in-out;
-        }
+.sidebar .button button {
+  width: 100%;
+  cursor: pointer;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  border: none;
 
-        .sidebar.collapsed .sidebar-header .button button .fas {
-          transform: rotate(180deg);
-          /* Rotate icon when collapsed */
-        }
-
-        /* Sidebar links container */
-        .sidebar-links {
-          width: 100%;
-          height: calc(100vh - 120px);
-          /* Adjust height based on header */
-          margin-top: 10px;
-          padding: 0 1rem;
-          /* Padding for the links section */
-          overflow-y: auto;
-          /* Enable scrolling for many links */
-          scrollbar-width: thin;
-          /* For Firefox */
-          scrollbar-color: #888 #4e2002;
-          /* For Firefox */
-        }
-
-        /* Custom scrollbar for Webkit browsers */
-        .sidebar-links::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        .sidebar-links::-webkit-scrollbar-track {
-          background: #4e2002;
-        }
-
-        .sidebar-links::-webkit-scrollbar-thumb {
-          background-color: #888;
-          border-radius: 10px;
-          border: 2px solid #4e2002;
-        }
-
-        .sidebar-links ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-
-        }
-
-        .sidebar-links ul li {
-          margin-bottom: 0.5rem;
-
-        }
-
-        /* Parent link styling (for items with submenus) */
-        .parent-link,
-        .direct-link {
-          border: 1px solid #4e2002;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          /* Space out icon, text, and arrow */
-          padding: 0.75rem;
-          border-radius: 0.5rem;
-          cursor: pointer;
-          transition: background-color 0.2s ease-in-out;
-          text-decoration: none;
-          /* For direct links */
-          color: #fff;
-          /* Default text color */
-          font-size: 1.125rem;
-          font-weight: 500;
-        }
-
-        .parent-link:hover,
-        .direct-link:hover {
-          border-color: white;
-          background-color: rgba(255, 255, 255, 0.1);
-          /* Lighter hover for dark background */
-        }
-
-        /* Link text within parent/direct links */
-        .link-text {
-          flex-grow: 1;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          margin-left: 0.75rem;
-          /* Space between icon and text */
-          opacity: 1;
-          transition: opacity 0.3s ease-in-out;
-        }
-
-        /* Hide text when sidebar is collapsed */
-        .sidebar.collapsed .link-text {
-          opacity: 0;
-          width: 0;
-          /* Collapse width to hide */
-          display: none;
-          /* Hide completely for screen readers and layout */
-        }
-
-        /* Icons for menu items */
-        .menu-icon,
-        .submenu-icon {
-          display: inline-block;
-          width: 1.25rem;
-          height: 1.25rem;
-          color: #f8eee7;
-          /* Light color for icons */
-          flex-shrink: 0;
-          /* Prevent icon from shrinking */
-        }
-
-        /* Arrow icon for parent links */
-        .arrow-icon {
-          width: 1.25rem;
-          height: 1.25rem;
-          transition: transform 0.2s ease-in-out;
-          flex-shrink: 0;
-          color: #f8eee7;
-          /* Light color for arrow */
-        }
-
-        /* Hide arrow icon when sidebar is collapsed */
-        .sidebar.collapsed .arrow-icon {
-          display: none;
-        }
-
-        /* Rotate arrow icon when submenu is active */
-        .arrow-icon.rotate {
-          transform: rotate(90deg);
-        }
-
-        /* Submenu styling */
-        .submenu {
-          list-style: none;
-          padding-left: 1.5rem;
-          /* Indent submenus */
-          padding-top: 0.5rem;
-          margin: 0;
-          max-height: 0;
-          /* Initially hidden */
-          overflow: hidden;
-          transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-          opacity: 0;
-        }
-
-        /* Show submenu when active */
-        .submenu.active {
-          max-height: 500px;
-          /* Sufficiently large to show all content */
-          opacity: 1;
-        }
-
-        .submenu li a {
-          display: flex;
-          align-items: center;
-          padding: 0.5rem;
-          border-radius: 0.375rem;
-          color: #ffffff;
-          text-decoration: none;
-          transition: background-color 0.2s ease-in-out;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .submenu li a:hover {
-          background-color: rgba(255, 255, 255, 0.05);
-          /* Slightly lighter hover for sub-items */
-        }
-
-        .submenu li .submenu-icon {
-          margin-right: 0.75rem;
-          /* Space between icon and text in submenu */
-        }
-
-        /* Logout button specific styling */
-        .logout-link {
-          background-color: #dc2626;
-          /* Red color for logout */
-          justify-content: center;
-          /* Center content horizontally */
-        }
-
-        .logout-link:hover {
-          background-color: #ff6565;
-          /* Darker red on hover */
-        }
+  transform: rotate(180deg);
+  height: 100%;
+  background: transparent;
+  color: rgb(5, 5, 5);
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+}
 
 
+.sidebar .button button:hover {
+  color: white;
+}
+
+/* Toggle icon rotation */
+.sidebar-header .button button .fas {
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .sidebar-header .button button .fas {
+  transform: rotate(180deg);
+  /* Rotate icon when collapsed */
+}
+
+/* Sidebar links container */
+.sidebar-links {
+  width: 100%;
+  height: calc(100vh - 120px);
+  /* Adjust height based on header */
+  margin-top: 10px;
+  padding: 0 1rem;
+  /* Padding for the links section */
+  overflow-y: auto;
+  /* Enable scrolling for many links */
+  scrollbar-width: thin;
+  /* For Firefox */
+  scrollbar-color: #888 #4e2002;
+  /* For Firefox */
+}
+
+/* Custom scrollbar for Webkit browsers */
+.sidebar-links::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-links::-webkit-scrollbar-track {
+  background: #4e2002;
+}
+
+.sidebar-links::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid #4e2002;
+}
+
+.sidebar-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.sidebar-links ul li {
+  margin-bottom: 0.5rem;
+
+}
+
+/* Parent link styling (for items with submenus) */
+.parent-link,
+.direct-link {
+  border: 1px solid #4e2002;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Space out icon, text, and arrow */
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  text-decoration: none;
+  /* For direct links */
+  color: #fff;
+  /* Default text color */
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.parent-link:hover,
+.direct-link:hover {
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Lighter hover for dark background */
+}
+
+/* Link text within parent/direct links */
+.link-text {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 0.75rem;
+  /* Space between icon and text */
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide text when sidebar is collapsed */
+.sidebar.collapsed .link-text {
+  opacity: 0;
+  width: 0;
+  /* Collapse width to hide */
+  display: none;
+  /* Hide completely for screen readers and layout */
+}
+
+/* Icons for menu items */
+.menu-icon,
+.submenu-icon {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #f8eee7;
+  /* Light color for icons */
+  flex-shrink: 0;
+  /* Prevent icon from shrinking */
+}
+
+/* Arrow icon for parent links */
+.arrow-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+  color: #f8eee7;
+  /* Light color for arrow */
+}
+
+/* Hide arrow icon when sidebar is collapsed */
+.sidebar.collapsed .arrow-icon {
+  display: none;
+}
+
+/* Rotate arrow icon when submenu is active */
+.arrow-icon.rotate {
+  transform: rotate(90deg);
+}
+
+/* Submenu styling */
+.submenu {
+  list-style: none;
+  padding-left: 1.5rem;
+  /* Indent submenus */
+  padding-top: 0.5rem;
+  margin: 0;
+  max-height: 0;
+  /* Initially hidden */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 0;
+}
+
+/* Show submenu when active */
+.submenu.active {
+  max-height: 500px;
+  /* Sufficiently large to show all content */
+  opacity: 1;
+}
+
+.submenu li a {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.submenu li a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Slightly lighter hover for sub-items */
+}
+
+.submenu li .submenu-icon {
+  margin-right: 0.75rem;
+  /* Space between icon and text in submenu */
+}
+
+/* Logout button specific styling */
+.logout-link {
+  background-color: #dc2626;
+  /* Red color for logout */
+  justify-content: center;
+  /* Center content horizontally */
+}
+
+.logout-link:hover {
+  background-color: #ff6565;
+  /* Darker red on hover */
+}
 
 
-        /* Main Content Area */
-        .main-content {
-          width: calc(100vw - 330px);
-          height: 100vh;
-          background-color: rebeccapurple;
-          flex-grow: 1;
-          padding: 2rem;
-          color: #374151;
-          /* Dark gray text */
-          margin-left: 330px;
-          /* Initial margin for expanded sidebar */
-          transition: margin-left 0.3s ease;
 
-        }
 
-        .sidebar.collapsed~.main-content {
-          margin-left: 70px;
-          min-width: calc(100vw - 70px);
-          /* Margin when sidebar is collapsed */
-        }
+/* Main Content Area */
+.main-content {
+  overflow-y: hidden;
+  height: 100vh;
+  flex-grow: 1;
+  /* color: #374151; */
+  margin-left: 330px;
+  transition: margin-left 0.3s ease;
 
-        .main-content h1 {
-          font-size: 1.875rem;
-          font-weight: 700;
-          margin-bottom: 1.5rem;
-        }
+}
 
-        .main-content p {
-          color: #4b5563;
-        }
+.sidebar.collapsed~.main-content {
+  margin-left: 70px;
+  /* Margin when sidebar is collapsed */
+}
+
+.dashboard-main {
+  width: 100%;
+  min-height: 100%;
+  background-color: #e1dfdfae;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.dashboard-main .dashboard-card {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  min-height: 290px;
+  background-color: #fffdf9;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    color: black;
+
+  }
+
+}
+
+.dashboard-main .rate-section {
+  background-color: #fff1e1;
+}
+
+.dashboard-main .dashboard-card p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.dashboard-main .card h3 {
+  text-transform: capitalize;
+  margin: 20px 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  justify-content: space-between;
+
+}
+
+.dashboard-main ul {
+  margin-top: 20px;
+}
+
+.dashboard-main ul li {
+  margin: 10px;
+  padding: 5px 0px;
+  text-transform: capitalize;
+
+}
+
+.dashboard-card .scheme-card p {
+  border: none;
+  text-align: left;
+  margin: 20px 0px;
+}
+
+.dashboard-card .scheme-card strong {
+  color: #ff6f6f;
+}
+
+.dashboard-card .scheme-card {
+  text-align: center;
+}
+
+.dashboard-card .scheme-card p {
+  margin-bottom: 80px;
+}
+
+.dashboard-card .scheme-card a {
+  background-color: #dbdbdb;
+  border-radius: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 18px 60px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: black;
+    box-shadow: 0px 0px 10px rgba(91, 24, 24, 0.665);
+  }
+}
+
+.calculate-omr {
+  margin-top: 10px;
+}
+
+.dashboard-card.omr {
+  background-color: #b7c5a9;
+}
+
+.dashboard-card.omr:hover {
+  transform: none !important;
+}
+
+.calculate-omr input,
+select,
+button {
+  width: 100%;
+  border: 1px solid orange;
+  outline-color: goldenrod;
+  font-size: 18px;
+  margin: 5px 0px;
+  padding: 5px 10px;
+}
+
+.calculate-omr button {
+  border: 1px solid #dc2626;
+  background-color: #ffe1e1;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #f69898;
+    box-shadow: 0px 0px 10px rgba(91, 24, 24, 0.665);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+}
+
+.quick-card{
+  margin-top: 20px;
+}
+.quick-btn {
+  padding: 12px 0px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 10px 0px;
+
+  &:hover {
+    background-color: #cacaca;
+    cursor: pointer;
+  }
+}
