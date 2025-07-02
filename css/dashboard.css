@@ -95,6 +95,15 @@ body {
   text-overflow: ellipsis;
 }
 
+.sidebar-header .app-name h3 {
+  font-size: 25px;
+}
+
+.sidebar-header .app-name p {
+  font-size: 12px;
+  font-weight: 200;
+}
+
 .sidebar.collapsed .sidebar-header .app-name {
   opacity: 0;
   width: 0;
@@ -485,9 +494,10 @@ button {
   }
 }
 
-.quick-card{
+.quick-card {
   margin-top: 20px;
 }
+
 .quick-btn {
   padding: 12px 0px;
   background-color: #ffffff;
@@ -495,7 +505,7 @@ button {
   margin: 10px 0px;
 
   &:hover {
-     background-color: #ffe1e1;
+    background-color: #ffe1e1;
     cursor: pointer;
   }
 }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glimmer Grid - Home Page</title>
+  <title>Glimmer Grid - Dashboard Page</title>
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -15,6 +15,7 @@
   <div class="container">
     <!-- ===aside bar -->
     <aside id="sidebar" class="sidebar">
+      <!-- logo and name -->
       <div class="sidebar-header">
         <div class="img">
           <!-- Using your provided image path -->
@@ -32,6 +33,7 @@
         </div>
       </div>
 
+      <!-- Quick  links  -->
       <div class="sidebar-links">
         <ul>
           <!-- STOCK -->
@@ -44,7 +46,7 @@
             <ul id="stock-submenu" class="submenu">
               <li><a href="#"><i class="fas fa-plus-circle submenu-icon"></i> <span class="link-text">Add
                     Product</span></a></li>
-              <li><a href="#"><i class="fas fa-info-circle submenu-icon"></i> <span class="link-text">Product
+              <li><a href="#"><i class="fa-solid fa-gem submenu-icon"></i> <span class="link-text">Product
                     Details</span></a></li>
             </ul>
           </li>
@@ -103,49 +105,58 @@
           </li>
 
           <!-- ADMIN -->
-          <li>
+          <li id="admin-list">
             <div class="parent-link" data-target="admin-submenu">
               <i class="fas fa-user-shield menu-icon"></i> <!-- Admin icon -->
               <span class="link-text">ADMIN</span>
               <i class="fas fa-angle-right arrow-icon"></i>
             </div>
             <ul id="admin-submenu" class="submenu">
-              <li><a href="#"><i class="fas fa-user-plus submenu-icon"></i> <span class="link-text">Add User</span></a>
+              <li><a href="#"><i class="fa-solid fa-rupee-sign submenu-icon"></i> <span class="link-text">Set Metal
+                    Rate</span></a>
               </li>
-              <li><a href="#"><i class="fas fa-users-cog submenu-icon"></i> <span class="link-text">Manage
-                    Users</span></a></li>
+              <li><a href="#"><i class="fas fa-file-invoice-dollar submenu-icon"></i><span class="link-text">Invoice
+                    (Edit / Delete)</span></a></li>
+              <li><a href="#"><i class="fas fa-clipboard-list submenu-icon"></i><span class="link-text">Order
+                    (Edit / Delete)</span></a></li>
+              <li><a href="#"><i class="fa-solid fa-gem submenu-icon"></i><span class="link-text">Product
+                    (Edit / Delete)</span></a></li>
+              <li><a href="#"><i class="fas fa-gift menu-icon submenu-icon"></i><span class="link-text">Scheme
+                    (Edit / Delete)</span></a></li>
               <li><a href="#"><i class="fas fa-key submenu-icon"></i> <span
                     class="link-text">Permissions/Roles</span></a></li>
-              <li><a href="#"><i class="fas fa-cogs submenu-icon"></i> <span class="link-text">System
-                    Settings</span></a></li>
-              <li><a href="#"><i class="fas fa-clipboard-check submenu-icon"></i> <span class="link-text">Audit
-                    Logs</span></a></li>
+              <li><a href="#"><i class="fas fa-cogs submenu-icon"></i> <span class="link-text">User Setting</span></a></li>
+
               <li><a href="#"><i class="fas fa-database submenu-icon"></i> <span
                     class="link-text">Backup/Restore</span></a></li>
-            </ul>
-          </li>
 
-          <!-- USER DETAILS (direct link) -->
-          <li>
-            <a href="#" class="direct-link">
-              <i class="fas fa-user-circle menu-icon"></i> <!-- User details icon -->
-              <span class="link-text">USER DETAILS</span>
-            </a>
-          </li>
 
-          <!-- LOGOUT (direct link) -->
-          <li>
-            <a href="#" class="direct-link logout-link">
-              <i class="fas fa-sign-out-alt menu-icon"></i> <!-- Logout icon -->
-              <span class="link-text">LOGOUT</span>
-            </a>
+
           </li>
+        </ul>
+        </li>
+
+        <!-- USER DETAILS (direct link) -->
+        <li>
+          <a href="#" class="direct-link">
+            <i class="fas fa-user-circle menu-icon"></i> <!-- User details icon -->
+            <span class="link-text">USER DETAILS</span>
+          </a>
+        </li>
+
+        <!-- LOGOUT (direct link) -->
+        <li>
+          <a href="#" class="direct-link logout-link">
+            <i class="fas fa-sign-out-alt menu-icon"></i> <!-- Logout icon -->
+            <span class="link-text">LOGOUT</span>
+          </a>
+        </li>
         </ul>
       </div>
     </aside>
 
 
-
+    <!-- Right side conatiner -->
     <main class="main-content">
       <div class="dashboard-main">
         <!-- today rate update -->

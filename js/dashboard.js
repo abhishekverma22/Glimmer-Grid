@@ -1,3 +1,4 @@
+// expandable sidebar line no 2 to 61.
 document.addEventListener('DOMContentLoaded', function () {
   const sidebar = document.getElementById('sidebar');
   
@@ -58,3 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+// 
