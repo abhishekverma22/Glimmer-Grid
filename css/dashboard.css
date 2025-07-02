@@ -345,7 +345,6 @@ body {
   overflow-y: hidden;
   height: 100vh;
   flex-grow: 1;
-  /* color: #374151; */
   margin-left: 330px;
   transition: margin-left 0.3s ease;
 
@@ -375,12 +374,6 @@ body {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   transition: 0.2s ease-in-out;
 
-  &:hover {
-    transform: scale(1.05);
-    color: black;
-
-  }
-
 }
 
 .dashboard-main .rate-section {
@@ -390,6 +383,7 @@ body {
 .dashboard-main .dashboard-card p {
   text-align: center;
   font-size: 20px;
+  color: #374151;
   font-weight: 700;
   letter-spacing: 2px;
   border-bottom: 1px solid;
@@ -501,7 +495,7 @@ button {
   margin: 10px 0px;
 
   &:hover {
-    background-color: #cacaca;
+     background-color: #ffe1e1;
     cursor: pointer;
   }
 }
