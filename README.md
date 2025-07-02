@@ -64,6 +64,17 @@ git clone  [Click here](https://github.com/abhishekverma22/Glimmer-Grid.git)
 
 3. Add your Firebase config in JS files.
 
+### 🔐 Firebase Configuration 
+The file `firebase-config.js` is not included in this repository for security reasons.
+#### To run this project:
+1. Create a file at `firebase-config.js`
+2. Copy the structure from `firebase-config.demo.js`
+firebase-config.js file is saved directly in the root directory (not inside a folder like js/) or Change file name `firebase-config-demo.js` to `firebse-config.js`
+3. Add your own Firebase project credentials
+
+#### This file is required for Firebase Authentication and Realtime Database features to work.
+
+
 4. Run using Live Server or deploy with Firebase Hosting.
 
 
