@@ -194,3 +194,103 @@ video {
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
+
+
+/* ============  responsive design ============= */
+
+/* Responsive for tablets (width < 1024px) */
+@media screen and (max-width: 1024px) {
+  .login-container {
+    width: 95%;
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+  }
+
+  .login-container .login-left,
+  .login-container .login-right {
+    width: 100%;
+    max-height: unset;
+    min-height: unset;
+    border-radius: 0;
+  }
+
+  .login-container .login-left {
+    padding: 2rem 4rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .login-container .login-right {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .login-container video {
+    border-radius: 0 0 20px 20px;
+  }
+}
+
+/* Responsive for mobile devices (width < 768px) */
+@media screen and (max-width: 768px) {
+  header {
+    height: 80px;
+    padding: 8px;
+  }
+
+  .logo-name h3 {
+    font-size: 24px;
+  }
+
+  .logo-name p {
+    font-size: 12px;
+  }
+
+  .login-container .login-left {
+    padding: 1.5rem 2rem;
+  }
+
+  .login-container .login-left h1 {
+    font-size: 40px;
+  }
+
+  .loginform {
+    padding: 1rem;
+    height: auto;
+  }
+
+  .loginform label {
+    font-size: 20px;
+  }
+
+  .loginform input {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  .btn button {
+    font-size: 20px;
+    padding: 10px;
+  }
+}
+
+/* Extra small devices (width < 480px) */
+@media screen and (max-width: 480px) {
+  .login-container .login-left h1 {
+    font-size: 30px;
+  }
+
+  .loginform label {
+    font-size: 18px;
+  }
+
+  .loginform input {
+    font-size: 16px;
+  }
+
+  .btn button {
+    font-size: 18px;
+  }
+}

@@ -72,7 +72,7 @@ The file `firebase-config.js` is not included in this repository for security re
 firebase-config.js file is saved directly in the root directory (not inside a folder like js/) or Change file name `firebase-config-demo.js` to `firebse-config.js`
 3. Add your own Firebase project credentials
 
-### This file is required for Firebase Authentication, Firebase Store Database and Realtime Database features to work.
+#### This file is required for Firebase Authentication, Firebase Store Database and Realtime Database features to work.
 
 
 4. Run using Live Server or deploy with Firebase Hosting.

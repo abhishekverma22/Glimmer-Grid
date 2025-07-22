@@ -8,6 +8,13 @@
   <link rel="stylesheet" href="index.css">
   <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
   <script type="module" src="index.js" defer></script>
+  <style>
+    @media (max-width: 768px) {
+      body {
+        overflow: hidden;
+      }
+    }
+  </style>
 
 </head>
 
@@ -83,3 +90,19 @@
 </body>
 
 </html>
+
+
+<!-- this is for glimmer grid app is not open in small device  -->
+ <!-- <script>
+   window.onload = function () {
+     if (window.innerWidth < 768) {
+        document.querySelector("body").style.background = "none"
+        document.body.innerHTML = `
+          <div style="text-align:center; padding: 50px;">
+            <h2 style="color: red;">⚠️ Glimmer Grid is not available on mobile devices.</h2>
+            <p>Please use a desktop or laptop to access this application.</p>
+          </div>
+        `;
+      }
+    }
+  </script> -->

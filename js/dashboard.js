@@ -1,7 +1,7 @@
 // expandable sidebar line no 2 to 61.
 document.addEventListener('DOMContentLoaded', function () {
   const sidebar = document.getElementById('sidebar');
-  
+
   const sidebarToggleButton = document.getElementById('sidebar-toggle-btn');
   const toggleMainIcon = document.querySelector('.toggle-main-icon'); // The main toggle icon
   const parentLinks = document.querySelectorAll('.parent-link');
@@ -60,5 +60,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+
+const navLinks = document.querySelectorAll(".navLinks");
+navLinks.forEach((link, i) => {
+  // console.log(nav.attributes.href.value, i)
+  console.log(link)
+})
 
 // 

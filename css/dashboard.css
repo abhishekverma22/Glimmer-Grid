@@ -24,7 +24,6 @@ body {
   display: flex;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
 }
 
 /* Side bar nav */
@@ -33,21 +32,17 @@ body {
   left: 0;
   top: 0;
   width: 330px;
-  /* Expanded width */
   height: 100vh;
-  background: #4e2002;
-  /* Dark brown from your design */
-  color: white;
+  background: #1C1C1C;
+  color: #FFFFFF;
   transition: width 0.3s ease;
   overflow: hidden;
-  /* Hide content when collapsed */
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.959);
   z-index: 1000;
-  /* Ensure sidebar is on top */
 }
 
 .sidebar.collapsed {
-  width: 70px;
+  width: 80px;
   /* Collapsed width */
 }
 
@@ -351,7 +346,6 @@ body {
 
 /* Main Content Area */
 .main-content {
-  overflow-y: hidden;
   height: 100vh;
   flex-grow: 1;
   margin-left: 330px;
@@ -360,7 +354,7 @@ body {
 }
 
 .sidebar.collapsed~.main-content {
-  margin-left: 70px;
+  margin-left: 80px;
   /* Margin when sidebar is collapsed */
 }
 
@@ -508,4 +502,14 @@ button {
     background-color: #ffe1e1;
     cursor: pointer;
   }
+}
+
+
+
+.hidden {
+  display: none !important;
+  min-height: 200vh;
+  width: 100%;
+  padding: 20px;
+
 }
