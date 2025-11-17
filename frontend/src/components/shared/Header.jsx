@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
-import { Bell } from "lucide-react";
+import { Bell, Moon, Sun } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
 
 const Header = () => {
   const [user, setUser] = useState({});
@@ -19,6 +20,8 @@ const Header = () => {
     getUserName();
   }, []);
 
+  const { theme, setTheme } = useTheme();
+
   useEffect(() => {
     const checkSize = () => {
       setIsSmallDevice(window.innerWidth < 640);
@@ -36,7 +39,11 @@ const Header = () => {
       : user.name || "Guest";
 
   return (
-    <header className="min-h-16 sm:min-h-20 shadow-lg w-full bg-slate-200 px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between">
+    <header
+      className={`min-h-16 sm:min-h-20 shadow-lg w-full   px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between
+    ${theme ? "bg-slate-200" : "bg-slate-800"}
+    `}
+    >
       <div
         id="left"
         className="flex items-center space-x-1 sm:space-x-2 md:space-x-3"
@@ -49,13 +56,21 @@ const Header = () => {
             className="h-8 sm:h-10 md:h-12 lg:h-16 w-full object-contain"
           />
         </div>
-        <div className="hidden sm:block h-6 sm:h-8 md:h-10 w-px border border-gray-300 -ml-5"></div>
+        <div
+          className={`hidden sm:block h-6 sm:h-8 md:h-10 w-px border -ml-5 ${
+            theme ? " border-gray-300" : "border-gray-600"
+          }`}
+        ></div>
         {/* name and tagline */}
         <div id="nameAndTagline" className="text-center min-w-0">
           <h1 className="text-xl sm:text-2xl md:text-3xl bg-linear-to-r from-yellow-600 via-amber-700 to-orange-600 bg-clip-text text-transparent drop-shadow-md font-medium truncate">
             GlimmerGrid
           </h1>
-          <p className="text-[10px] sm:text-sm text-gray-500">
+          <p
+            className={`text-[10px] sm:text-sm ${
+              theme ? "text-gray-500" : "text-gray-300"
+            }`}
+          >
             Your Jewelry, Our Precision
           </p>
         </div>
@@ -65,8 +80,22 @@ const Header = () => {
         id="right"
         className="flex items-center justify-center gap-2 sm:gap-3"
       >
+        {/* Dark and night mode */}
+        <div className="rounded-full flex items-center justify-center">
+          <button
+            className="px-2 py-1 h-full w-full cursor-pointer "
+            onClick={() => setTheme(!theme)}
+          >
+            {theme ? (
+              <Moon className="text-gray-700" />
+            ) : (
+              <Sun className="text-gray-400" />
+            )}
+          </button>
+        </div>
+
         {/* user */}
-        <div className="border border-gray-300 rounded-2xl bg-white/80 shadow-md px-2 sm:px-3 md:px-4 py-1 sm:py-1.5">
+        <div className="border border-gray-300 rounded-2xl bg-white/60  shadow-md px-2 sm:px-3 md:px-4 py-1 sm:py-1.5">
           <h2 className="capitalize text-xs sm:text-sm md:text-base">
             {user.role} :{" "}
             <span className="text-[14px] sm:text-[16px] uppercase text-gray-800">
@@ -77,7 +106,7 @@ const Header = () => {
 
         {/* alert button */}
         <div className="relative">
-          <button className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-10 lg:w-10 rounded-full bg-amber-50 border-2 border-gray-300 shadow-md flex items-center justify-center cursor-pointer transition-all duration-200 hover:shadow-lg">
+          <button className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-10 lg:w-10 rounded-full bg-amber-50/80 border-2 border-gray-300 shadow-md flex items-center justify-center cursor-pointer transition-all duration-200 hover:shadow-lg">
             <Bell className="text-amber-600 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
           </button>
           {/* Notification Count */}

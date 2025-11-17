@@ -2,20 +2,37 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate();
+
+  const checkUserDetailsFromLocalStorage = () => {
+    const response = localStorage.getItem("user");
+    const data = JSON.parse(response);
+
+    return data;
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 10 } },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100, damping: 10 },
+    },
   };
 
   const inputVariants = {
@@ -24,7 +41,17 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+
+    const details = checkUserDetailsFromLocalStorage();
+    if (email === details.email && password === details.password) {
+      if (details.role === "admin") {
+        navigate("/admin-dashboard");
+      } else {
+        navigate("/user-dashboard");
+      }
+    } else {
+      alert("wrong");
+    }
   };
 
   return (
@@ -59,9 +86,18 @@ const Login = () => {
             className="relative z-10 w-28 sm:w-36 md:w-60"
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 120, damping: 10, delay: 0.2 }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 10,
+              delay: 0.2,
+            }}
           >
-            <img src={logo} alt="Glimmer-Grid Logo" className="w-full h-auto object-contain drop-shadow-lg" />
+            <img
+              src={logo}
+              alt="Glimmer-Grid Logo"
+              className="w-full h-auto object-contain drop-shadow-lg"
+            />
           </motion.div>
 
           {/* Name */}
@@ -69,7 +105,12 @@ const Login = () => {
             className="relative z-10 text-center"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, type: "spring", stiffness: 100, damping: 15 }}
+            transition={{
+              delay: 0.4,
+              type: "spring",
+              stiffness: 100,
+              damping: 15,
+            }}
           >
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-black bg-linear-to-r from-yellow-400 via-amber-300 to-orange-400 bg-clip-text text-transparent drop-shadow-md">
               Glimmer-Grid
@@ -83,7 +124,7 @@ const Login = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, type: "spring", stiffness: 80 }}
           >
-            Tradition in Every Piece, Trend in Every Style, Trust in Every Shine
+            Your Jewelry, Our Precision
           </motion.p>
         </motion.div>
 
@@ -100,7 +141,7 @@ const Login = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 }}
             >
-              Welcome Back
+              Manage Your Treasures
             </motion.h1>
             <motion.p
               className="text-gray-600 text-xs sm:text-sm md:text-base max-w-md leading-relaxed"
@@ -108,14 +149,22 @@ const Login = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Premium jewelry inventory solution. Streamline your business with effortless inventory and billing management.
+              Effortless inventory management at your fingertips.
             </motion.p>
           </motion.div>
 
           {/* Form */}
-          <motion.form onSubmit={handleSubmit} className="w-full max-w-md space-y-5" variants={itemVariants}>
+          <motion.form
+            onSubmit={handleSubmit}
+            className="w-full max-w-md space-y-5"
+            variants={itemVariants}
+          >
             {/* Email */}
-            <motion.div className="relative" variants={itemVariants} whileFocus={inputVariants}>
+            <motion.div
+              className="relative"
+              variants={itemVariants}
+              whileFocus={inputVariants}
+            >
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 sm:w-5 h-4 sm:h-5" />
               <input
                 type="email"
@@ -128,7 +177,11 @@ const Login = () => {
             </motion.div>
 
             {/* Password */}
-            <motion.div className="relative" variants={itemVariants} whileFocus={inputVariants}>
+            <motion.div
+              className="relative"
+              variants={itemVariants}
+              whileFocus={inputVariants}
+            >
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 sm:w-5 h-4 sm:h-5" />
               <input
                 type={showPassword ? "text" : "password"}
@@ -143,7 +196,11 @@ const Login = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
               >
-                {showPassword ? <EyeOff className="w-4 sm:w-5 h-4 sm:h-5" /> : <Eye className="w-4 sm:w-5 h-4 sm:h-5" />}
+                {showPassword ? (
+                  <EyeOff className="w-4 sm:w-5 h-4 sm:h-5" />
+                ) : (
+                  <Eye className="w-4 sm:w-5 h-4 sm:h-5" />
+                )}
               </button>
             </motion.div>
 
