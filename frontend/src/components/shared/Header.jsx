@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <header
       className={`min-h-16 sm:min-h-20 shadow-lg w-full   px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between
-    ${theme ? "bg-slate-200" : "bg-slate-800"}
+    ${theme ? "bg-[#fefff7]" : "bg-gray-900"}
     `}
     >
       <div

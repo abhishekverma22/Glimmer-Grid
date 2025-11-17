@@ -1,23 +1,35 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, Sun, Moon } from "lucide-react";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const checkUserDetailsFromLocalStorage = () => {
     const response = localStorage.getItem("user");
-    const data = JSON.parse(response);
-
-    return data;
+    return response ? JSON.parse(response) : null;
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const details = checkUserDetailsFromLocalStorage();
+    if (details && email === details.email && password === details.password) {
+      navigate(
+        details.role === "admin" ? "/admin-dashboard" : "/user-dashboard"
+      );
+    } else {
+      alert("Wrong email or password");
+    }
+  };
+
+  // Framer Motion variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,7 +37,6 @@ const Login = () => {
       transition: { staggerChildren: 0.2, delayChildren: 0.1 },
     },
   };
-
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -34,40 +45,36 @@ const Login = () => {
       transition: { type: "spring", stiffness: 100, damping: 10 },
     },
   };
-
   const inputVariants = {
     focus: { scale: 1.02, transition: { duration: 0.2 } },
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const details = checkUserDetailsFromLocalStorage();
-    if (email === details.email && password === details.password) {
-      if (details.role === "admin") {
-        navigate("/admin-dashboard");
-      } else {
-        navigate("/user-dashboard");
-      }
-    } else {
-      alert("wrong");
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-200 via-green-50 to-slate-200 flex items-center justify-center p-4">
+    <div
+      className={`min-h-screen flex items-center justify-center p-4 transition-colors duration-500 ${
+        !theme
+          ? "bg-gray-900"
+          : "bg-linear-to-br from-slate-200 via-green-50 to-slate-200"
+      }`}
+    >
       <motion.div
-        className="w-full max-w-6xl h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row"
+        className={`w-full max-w-6xl h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-colors duration-500 ${
+          !theme ? "bg-gray-800" : "bg-white"
+        }`}
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        {/* Left Section - Hero */}
+        {/* Left Hero Section */}
         <motion.div
-          className="md:w-1/2 bg-linear-to-br from-indigo-600 to-purple-700 flex flex-col items-center justify-center p-4 md:p-12 gap-4 md:gap-6 relative overflow-hidden"
+          className={`md:w-1/2 flex flex-col items-center justify-center p-4 md:p-12 gap-4 md:gap-6 relative overflow-hidden transition-colors duration-500 ${
+            !theme
+              ? "bg-linear-to-br from-black via-gray-900 to-gray-800" // Dark mode
+              : "bg-linear-to-br from-indigo-600 to-purple-700" // Light mode
+          }`}
           variants={itemVariants}
         >
-          {/* Background elements */}
+          {/* Animated Background Circles */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
               className="absolute -top-40 -right-40 w-40 md:w-80 h-40 md:h-80 bg-white/10 rounded-full"
@@ -83,7 +90,7 @@ const Login = () => {
 
           {/* Logo */}
           <motion.div
-            className="relative z-10 w-28 sm:w-36 md:w-60"
+            className="relative z-10 w-28 sm:w-36 md:w-45"
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{
@@ -119,7 +126,7 @@ const Login = () => {
 
           {/* Subheading */}
           <motion.p
-            className="relative z-10 text-white/90 text-center text-xs sm:text-sm md:text-base max-w-xs sm:max-w-md leading-relaxed font-light"
+            className="relative z-10 text-center text-xs sm:text-sm md:text-base max-w-xs sm:max-w-md leading-relaxed font-light text-white/90"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, type: "spring", stiffness: 80 }}
@@ -128,26 +135,44 @@ const Login = () => {
           </motion.p>
         </motion.div>
 
-        {/* Right Section - Form */}
+        {/* Right Form Section */}
         <motion.div
-          className="md:w-1/2 flex flex-col items-center justify-center p-4 md:p-12 gap-6 bg-white"
+          className={`md:w-1/2 flex flex-col items-center justify-center p-4 md:p-12 gap-6 rounded-r-3xl transition-colors duration-500 relative overflow-hidden
+    ${
+      !theme
+        ? "bg-linear-to-br from-gray-900 via-gray-800 to-gray-700 shadow-2xl border-l border-gray-800"
+        : "bg-linear-to-br from-white via-gray-50 to-gray-100 shadow-2xl border-l border-gray-200"
+    }`}
           variants={itemVariants}
         >
+          {/* Animated Background Circles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Top-left circle */}
+            <motion.div
+              className="absolute -top-40 -left-40 w-40 md:w-80 h-40 md:h-80 bg-white/10 rounded-full"
+              animate={{ y: [0, -20, 0], rotate: [0, 180, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Bottom-right circle */}
+            <motion.div
+              className="absolute -bottom-40 -right-40 w-40 md:w-80 h-40 md:h-80 bg-white/5 rounded-full"
+              animate={{ y: [0, 20, 0], rotate: [0, -180, -360] }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
           {/* Heading */}
           <motion.div className="text-center space-y-2" variants={itemVariants}>
             <motion.h1
-              className="text-xl sm:text-2xl md:text-4xl font-bold text-gray-700"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1 }}
+              className={`text-xl sm:text-2xl md:text-4xl font-bold transition-colors duration-500 ${
+                !theme ? "text-gray-100" : "text-gray-700"
+              }`}
             >
               Manage Your Treasures
             </motion.h1>
             <motion.p
-              className="text-gray-600 text-xs sm:text-sm md:text-base max-w-md leading-relaxed"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              className={`text-xs sm:text-sm md:text-base max-w-md leading-relaxed transition-colors duration-500 ${
+                !theme ? "text-gray-300" : "text-gray-600"
+              }`}
             >
               Effortless inventory management at your fingertips.
             </motion.p>
@@ -165,13 +190,21 @@ const Login = () => {
               variants={itemVariants}
               whileFocus={inputVariants}
             >
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 sm:w-5 h-4 sm:h-5" />
+              <Mail
+                className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors duration-500 ${
+                  !theme ? "text-gray-300" : "text-gray-400"
+                }`}
+              />
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 sm:pl-12 pr-4 py-2 sm:py-3 border border-gray-200 rounded-xl bg-gray-50/50 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none text-gray-900 placeholder-gray-500 transition-all duration-200 text-sm sm:text-base"
+                className={`w-full pl-10 pr-4 py-2 sm:py-3 rounded-xl outline-none text-sm sm:text-base transition-all duration-300 ${
+                  !theme
+                    ? "bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 focus:ring-2 focus:ring-indigo-400"
+                    : "bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500"
+                }`}
                 required
               />
             </motion.div>
@@ -182,19 +215,31 @@ const Login = () => {
               variants={itemVariants}
               whileFocus={inputVariants}
             >
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 sm:w-5 h-4 sm:h-5" />
+              <Lock
+                className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors duration-500 ${
+                  !theme ? "text-gray-300" : "text-gray-400"
+                }`}
+              />
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-2 sm:py-3 border border-gray-200 rounded-xl bg-gray-50/50 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none text-gray-900 placeholder-gray-500 transition-all duration-200 text-sm sm:text-base"
+                className={`w-full pl-10 pr-10 sm:pr-12 py-2 sm:py-3 rounded-xl outline-none text-sm sm:text-base transition-all duration-300 ${
+                  !theme
+                    ? "bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 focus:ring-2 focus:ring-indigo-400"
+                    : "bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500"
+                }`}
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                className={`absolute right-3 top-1/2 -translate-y-1/2 transition-colors duration-500 ${
+                  !theme
+                    ? "text-gray-300 hover:text-gray-100"
+                    : "text-gray-400 hover:text-gray-600"
+                }`}
               >
                 {showPassword ? (
                   <EyeOff className="w-4 sm:w-5 h-4 sm:h-5" />
